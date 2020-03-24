@@ -9,30 +9,41 @@
 
 <script>
 	var n=15;
-	var pF=100;
-	var hF=150;
+	var pF=16;
+	var hF=24;
 	
 	$(document).ready(function(){
-		$("#draggable").draggable();
-		$("#plus").click(function(){	
-			hF+=10; pF+=10;
-			$("#h1").css({"font-size":hF+"%"});
-			$("p.pF").css({"font-size":pF+"%"});
-			$("#cnt").text(++n);
+		$("#draggable").draggable({containment:"#dragContainer" });//containment:"#dragContainer" => "이 영역" 안에서만 이동
+		$("#plus").click(function(){
+			if(n<30 && n>=0){
+				hF+=3; pF+=3;
+				$("#h1").css({"font-size":hF+"px"});
+				$("p.pF").css({"font-size":pF+"px"});
+				$("#cnt").text(n+=3);
+			} else{
+				$("#cnt").text(n+=3);
+			}
+			
 		})
 		
-		$("#sub").click(function(){	
-			hF-=10; pF-=10;
-			$("#h1").css({"font-size":hF+"%"});
-			$("p.pF").css({"font-size":pF+"%"});
-			$("#cnt").text(--n);
+		$("#sub").click(function(){
+			if(n>3){
+				hF-=3; pF-=3;
+				$("#h1").animate({"font-size":hF+"px"});
+				$("p.pF").animate({"font-size":pF+"px"});
+				$("#cnt").text(n-=3);
+			} else{
+				$("#h1, p.pF").animate({"font-size":"0px"});
+				$("#cnt").text(n-=3);
+			}
+			
 		})
 
 	})
 </script>
 
 <style>
-	.drag{position:absolute; z-index:1; left:250px; top:50px; width: 150px; height: 100px;
+	.drag{position:absolute; z-index:1; right: 50px; top:50px; width: 150px; height: 100px;
 			border-style: solid; text-align: center; background-color: white;}
 	.p{background-color: gold; margin-top: 0px; margin-bottom: 20px;}
 
@@ -44,10 +55,10 @@
 </head>
 <body>
 
-<section>
+<section   id="dragContainer">
 	<div>
 		<h1 id="h1"> 오늘의 소설 </h1>
-		<p class="pF">하나</p>
+		<p class="pF">하나</p> <!-- 같은 이름의 id로 하니까 맨 위의 1개 밖에 적용이 안됨. 같은 이름의 class는 여러 개 적용이 됨 -->
 		<p class="pF">하나</p>
 		<p class="pF">하나</p>
 	</div>
