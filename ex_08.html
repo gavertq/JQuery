@@ -9,23 +9,23 @@
 
 <script>
 	var n=15;
-	var pF=100;
-	var hF=150;
+	var pF=16;
+	var hF=24;
 	
 	$(document).ready(function(){
 		$("#draggable").draggable();
 		$("#plus").click(function(){	
-			hF+=10; pF+=10;
-			$("#h1").css({"font-size":hF+"%"});
-			$("p.pF").css({"font-size":pF+"%"});
-			$("#cnt").text(++n);
+			hF+=3; pF+=3;
+			$("#h1").css({"font-size":hF+"px"});
+			$("p.pF").css({"font-size":pF+"px"});
+			$("#cnt").text(n+=3);
 		})
 		
 		$("#sub").click(function(){	
-			hF-=10; pF-=10;
-			$("#h1").css({"font-size":hF+"%"});
-			$("p.pF").css({"font-size":pF+"%"});
-			$("#cnt").text(--n);
+			hF-=3; pF-=3;
+			$("#h1").animate({"font-size":hF+"px"});
+			$("p.pF").animate({"font-size":pF+"px"});
+			$("#cnt").text(n-=3);
 		})
 
 	})
