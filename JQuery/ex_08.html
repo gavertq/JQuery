@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Drag and Drop test</title>
+
+<script src="jquery-3.4.1.min.js"></script>
+<script src="jquery-1.12.1-ui.js"></script>
+
+<script>
+	var n=15;
+	var pF=100;
+	var hF=150;
+	
+	$(document).ready(function(){
+		$("#draggable").draggable();
+		$("#plus").click(function(){	
+			hF+=10; pF+=10;
+			$("#h1").css({"font-size":hF+"%"});
+			$("p.pF").css({"font-size":pF+"%"});
+			$("#cnt").text(++n);
+		})
+		
+		$("#sub").click(function(){	
+			hF-=10; pF-=10;
+			$("#h1").css({"font-size":hF+"%"});
+			$("p.pF").css({"font-size":pF+"%"});
+			$("#cnt").text(--n);
+		})
+
+	})
+</script>
+
+<style>
+	.drag{position:absolute; z-index:1; left:250px; top:50px; width: 150px; height: 100px;
+			border-style: solid; text-align: center; background-color: white;}
+	.p{background-color: gold; margin-top: 0px; margin-bottom: 20px;}
+
+	section{width: 50%; height: 50%;}
+	img{width: 25px; height: 25px;}
+	span{width: 50px; height: 25px; background-color: yellow; padding: 0px 10px;}
+</style>
+
+</head>
+<body>
+
+<section>
+	<div>
+		<h1 id="h1"> 오늘의 소설 </h1>
+		<p class="pF">하나</p>
+		<p class="pF">하나</p>
+		<p class="pF">하나</p>
+	</div>
+
+	<div id="draggable" class="drag">
+		<p class="p">리모콘</p>
+		<p>
+			<img id="plus" src="resources/images/add.png">
+			<span id="cnt">15</span>
+			<img id="sub" src="resources/images/sub.jpg">
+		</p>
+	</div>
+</section>
+
+</body>
+</html>
