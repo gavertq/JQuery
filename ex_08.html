@@ -14,18 +14,22 @@
 	
 	$(document).ready(function(){
 		$("#draggable").draggable();
-		$("#plus").click(function(){	
-			hF+=3; pF+=3;
-			$("#h1").css({"font-size":hF+"px"});
-			$("p.pF").css({"font-size":pF+"px"});
-			$("#cnt").text(n+=3);
+		$("#plus").click(function(){
+			if(n<30){
+				hF+=3; pF+=3;
+				$("#h1").css({"font-size":hF+"px"});
+				$("p.pF").css({"font-size":pF+"px"});
+				$("#cnt").text(n+=3);
+			}
 		})
 		
-		$("#sub").click(function(){	
-			hF-=3; pF-=3;
-			$("#h1").animate({"font-size":hF+"px"});
-			$("p.pF").animate({"font-size":pF+"px"});
-			$("#cnt").text(n-=3);
+		$("#sub").click(function(){
+			if(n>3){
+				hF-=3; pF-=3;
+				$("#h1").animate({"font-size":hF+"px"});
+				$("p.pF").animate({"font-size":pF+"px"});
+				$("#cnt").text(n-=3);
+			}
 		})
 
 	})
