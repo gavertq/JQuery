@@ -15,12 +15,15 @@
 	$(document).ready(function(){
 		$("#draggable").draggable();
 		$("#plus").click(function(){
-			if(n<30){
+			if(n<30 && n>=0){
 				hF+=3; pF+=3;
 				$("#h1").css({"font-size":hF+"px"});
 				$("p.pF").css({"font-size":pF+"px"});
 				$("#cnt").text(n+=3);
+			} else{
+				$("#cnt").text(n+=3);
 			}
+			
 		})
 		
 		$("#sub").click(function(){
@@ -29,7 +32,11 @@
 				$("#h1").animate({"font-size":hF+"px"});
 				$("p.pF").animate({"font-size":pF+"px"});
 				$("#cnt").text(n-=3);
+			} else{
+				$("#h1, p.pF").animate({"font-size":"0px"});
+				$("#cnt").text(n-=3);
 			}
+			
 		})
 
 	})
